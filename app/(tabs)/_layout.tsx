@@ -6,6 +6,8 @@ import { Pressable } from 'react-native';
 import Colors from '@/constants/Colors';
 import { useColorScheme } from '@/components/useColorScheme';
 import { useClientOnlyValue } from '@/components/useClientOnlyValue';
+import { faBookBookmark, faBookmark, faBowlFood, faHouse, faMagnifyingGlass, faSave, faShop, faUser } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 
 // You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
 function TabBarIcon(props: {
@@ -29,14 +31,15 @@ export default function TabLayout() {
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Tab One',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          title: 'Home',
+          tabBarIcon: ({ color }) => <FontAwesomeIcon icon={faHouse} color={color} 
+          />,
           headerRight: () => (
             <Link href="/modal" asChild>
               <Pressable>
                 {({ pressed }) => (
-                  <FontAwesome
-                    name="info-circle"
+                  <FontAwesomeIcon
+                    icon={faBowlFood}
                     size={25}
                     color={Colors[colorScheme ?? 'light'].text}
                     style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
@@ -50,10 +53,24 @@ export default function TabLayout() {
       <Tabs.Screen
         name="two"
         options={{
-          title: 'Tab Two',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          title: 'Restaurantes',
+          tabBarIcon: ({ color }) => <FontAwesomeIcon icon={ faMagnifyingGlass } color={color} />,
         }}
       />
+      <Tabs.Screen
+        name="three"
+        options={{
+          title: 'Pedidos',
+          tabBarIcon: ({ color }) => <FontAwesomeIcon icon={ faBookmark } color={color} />,
+        }}
+        />
+        <Tabs.Screen
+        name="four"
+        options={{
+          title: 'Perfil',
+          tabBarIcon: ({ color }) => <FontAwesomeIcon icon={ faUser } color={color} />,
+        }}
+        />
     </Tabs>
   );
 }
