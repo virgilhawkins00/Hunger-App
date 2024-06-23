@@ -24,13 +24,21 @@ export default function TabLayout() {
         tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
         // Disable the static render of the header on web
         // to prevent a hydration error in React Navigation v6.
-        headerShown: useClientOnlyValue(false, true),
+        headerShown: false
+        //useClientOnlyValue(false, true),
       }}>
       <Tabs.Screen
         name="index"
         options={{
+<<<<<<< Updated upstream
           title: 'Tab One',
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+=======
+          title: 'Hunger',
+          headerTitle: 'Hunger',
+          tabBarIcon: ({ color }) => <FontAwesomeIcon icon={faHouse} color={color} 
+          />,
+>>>>>>> Stashed changes
           headerRight: () => (
             <Link href="/modal" asChild>
               <Pressable>

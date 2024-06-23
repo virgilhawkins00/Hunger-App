@@ -1,14 +1,43 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
+import { Header } from 'react-native-elements';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import { faBowlFood } from '@fortawesome/free-solid-svg-icons';
 
-import EditScreenInfo from '@/components/EditScreenInfo';
-import { Text, View } from '@/components/Themed';
+import SearchBar from '@/components/SearchBar';
+import CategoryList from '@/components/CategoryList';
+import TabOneScreen from './screens/TabOneScreen';
+import { useNavigation } from '@react-navigation/native';
+import ModalScreen from '../modal';
 
-export default function TabOneScreen() {
+
+export default function HomeScreen() {
+  const navigation = useNavigation();
+
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Tab One</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="app/(tabs)/index.tsx" />
+      <Header
+        leftComponent={
+          <TouchableOpacity>
+            <Text style={styles.headerTitle}>Home</Text>
+          </TouchableOpacity>
+        }
+        centerComponent={{
+          text: 'Fast Delivery',
+          style: { fontWeight: 'bold', fontSize: 20 },
+        }}
+        rightComponent={
+          <TouchableOpacity onPress={() => navigation.navigate('ModalScreen' as never)}>
+            <FontAwesomeIcon icon={faBowlFood} size={20} />
+          </TouchableOpacity>
+        }
+        containerStyle={{
+          backgroundColor: '#fff',
+          borderBottomWidth: 0,
+        }}
+      />
+      <SearchBar />
+      <CategoryList />
+      <TabOneScreen />
     </View>
   );
 }
@@ -16,16 +45,9 @@ export default function TabOneScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
   },
-  title: {
+  headerTitle: {
     fontSize: 20,
     fontWeight: 'bold',
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
   },
 });
