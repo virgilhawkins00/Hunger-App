@@ -72,7 +72,7 @@ export default function TabLayout() {
                 }}
             />
             <Tabs.Screen
-                name="four"
+                name="ProfileScreen"
                 options={{
                     title: 'Perfil',
                     tabBarIcon: ({ color }) => <FontAwesomeIcon icon={ faUser } color={color} />,
