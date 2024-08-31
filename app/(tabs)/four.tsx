@@ -1,35 +1,61 @@
-import { StyleSheet } from "react-native";
-
-import EditScreenInfo from "@/components/EditScreenInfo";
+import { StyleSheet, Image } from "react-native";
 import { Text, View } from "@/components/Themed";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
-import { faSave } from "@fortawesome/free-solid-svg-icons";
+import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
+import { List, ListItem, Separator } from "native-base";
 
-export default function TabThreeScreen() {
+export default function ProfileScreen() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Tab Three</Text>
-      <FontAwesomeIcon icon={faSave} style={styles.separator} />
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)"  />
-      {/* <EditScreenInfo path="app/(tabs)/three.tsx" /> */}
+      <View style={styles.profileContainer}>
+        <Image
+          source={{ uri: "https://example.com/user-image.jpg" }}
+          style={styles.profileImage}
+        />
+        <Text style={styles.profileName}>User Name</Text>
+      </View>
+      <Separator bordered />
+      <List>
+        <ListItem>
+          <Text>Edit Profile</Text>
+        </ListItem>
+        <ListItem>
+          <Text>Settings</Text>
+        </ListItem>
+        <ListItem>
+          <Text>Help</Text>
+        </ListItem>
+        <ListItem>
+          <Text>Logout</Text>
+        </ListItem>
+      </List>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: "center",
-        justifyContent: "center",
-    },
-    title: {
-        fontSize: 20,
-        fontWeight: "bold",
-    },
-    separator: {
-        marginVertical: 30,
-        height: 1,
-        width: "80%",
-    },
-    });
-    
+  container: {
+    flex: 1,
+    backgroundColor: "white",
+  },
+  profileContainer: {
+    alignItems: "center",
+    justifyContent: "center",
+    paddingVertical: 30,
+  },
+  profileImage: {
+    width: 100,
+    height: 100,
+    borderRadius: 50,
+  },
+  profileName: {
+    marginTop: 10,
+    fontSize: 20,
+    fontWeight: "bold",
+  },
+  separator: {
+    marginVertical: 10,
+    height: 1,
+    width: "100%",
+  },
+});
