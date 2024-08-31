@@ -30,15 +30,10 @@ export default function TabLayout() {
       <Tabs.Screen
         name="index"
         options={{
-<<<<<<< Updated upstream
-          title: 'Tab One',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-=======
           title: 'Hunger',
           headerTitle: 'Hunger',
-          tabBarIcon: ({ color }) => <FontAwesomeIcon icon={faHouse} color={color} 
+          tabBarIcon: ({ color }) => <FontAwesomeIcon icon={faHouse} color={color}
           />,
->>>>>>> Stashed changes
           headerRight: () => (
             <Link href="/modal" asChild>
               <Pressable>
