@@ -1,6 +1,6 @@
 import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from './index';
-import ModalScreen from '../modal';
+import ModalScreen from "@/app/(tabs)/screens/ModalScreen";
 import { NavigationContainer } from '@react-navigation/native';
 
 const Stack = createStackNavigator();

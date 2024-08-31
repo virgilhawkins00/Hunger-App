@@ -7,7 +7,7 @@ import SearchBar from '@/components/SearchBar';
 import CategoryList from '@/components/CategoryList';
 import TabOneScreen from './screens/TabOneScreen';
 import { useNavigation } from '@react-navigation/native';
-import ModalScreen from '../modal';
+import ModalScreen from './screens/modal';
 
 
 export default function HomeScreen() {
