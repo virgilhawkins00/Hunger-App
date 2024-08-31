@@ -11,7 +11,7 @@ export default function TabThreeScreen() {
       <Text style={styles.title}>Tab Three</Text>
       <FontAwesomeIcon icon={faSave} style={styles.separator} />
       <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)"  />
-      <EditScreenInfo path="app/(tabs)/three.tsx" />
+      {/* <EditScreenInfo path="app/(tabs)/three.tsx" /> */}
     </View>
   );
 }

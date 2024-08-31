@@ -5,9 +5,9 @@ import { faBowlFood } from '@fortawesome/free-solid-svg-icons';
 
 import SearchBar from '@/components/SearchBar';
 import CategoryList from '@/components/CategoryList';
-import TabOneScreen from './screens/TabOneScreen';
+// import TabOneScreen from './screens/TabOneScreen';
 import { useNavigation } from '@react-navigation/native';
-import ModalScreen from './screens/modal';
+// import ModalScreen from '../../components/ModalScreen';
 
 
 export default function HomeScreen() {
@@ -37,7 +37,7 @@ export default function HomeScreen() {
       />
       <SearchBar />
       <CategoryList />
-      <TabOneScreen />
+      {/* <TabOneScreen /> */}
     </View>
   );
 }

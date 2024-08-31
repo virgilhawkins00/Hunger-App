@@ -11,7 +11,7 @@ export default function TabOneScreen() {
         <View style={styles.separator} />
       </TouchableOpacity>
       <View style={styles.separator}  />
-      <EditScreenInfo path="app/(tabs)/index.tsx" />
+      {/* <EditScreenInfo path="app/(tabs)/index.tsx" /> */}
     </View>
   );
 }
