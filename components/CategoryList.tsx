@@ -1,5 +1,15 @@
 import React from 'react';
-import { View, StyleSheet, Text, FlatList } from 'react-native';
+import {View, StyleSheet, Text, FlatList, TouchableOpacity} from 'react-native';
+
+interface CategoryProps {
+  category: CategoryType;
+  onPress: (category: CategoryType) => void;
+}
+
+const handleCategoryPress = (category: CategoryType) => {
+  console.log("Category pressed:", category.name);
+  // navigation.navigate('CategoryScreen', { category });
+};
 
 const categories = [
   { id: 1, name: 'Pizza' },
@@ -12,25 +22,99 @@ const categories = [
   { id: 8, name: 'Others' },
 ];
 
-type CategoryType = { id: number, name: string };
+type CategoryType = {
+  id: number;
+  name: string;
+};
 
-const CategoryItem = ({ category = { id: 0, name: '' } }: { category?: CategoryType }) => (
-    <View style={styles.categoryItem}>
+const CategoryItem: React.FC<CategoryProps> = ({ category, onPress }) => (
+    <TouchableOpacity onPress={() => onPress(category)} style={styles.categoryItem}>
       <Text style={styles.categoryName}>{category.name}</Text>
-    </View>
-  );
+    </TouchableOpacity>
+);
+
+// this will fetch all data from the api
+//
+// const CategoryList = ():string|boolean => {
+//  const [categories: CategoryType[],
+//    setCategories] = useState<CategoryType[]>
+//    (initialState: []);
+//    const [isLoading: boolean, setIsLoading] =
+//      useState(true);
+//    const [error: string, setError] =
+//      useState<string | null>(null);
+//
+//    useEffect(effect: () => {
+//      const fetchCategories = async ()
+//      :Promise<void> = {
+//      try {
+//        const response: Response = await fetch('ENV_API_ENDPOINT/categories');
+//
+//      if (!response.ok) {
+//        throw new Error('Failed to fetch categories');
+//      }
+//
+//      const data = await response.json();
+//      setCategories(data);
+//    } catch (err) {
+//      setError('Error loading categories. Please try again later.');
+//      console.error('Error fetching categories:', err);
+//    } finally {
+//      setIsLoading(false);
+//    }
+//  };
+//  fetchCategories();
+//}, []);
+//
+// const handleCategoryPress = (category: CategoryType) => {
+//  console.log("Category pressed:", category.name);
+// // navigation.navigate('CategoryScreen', { category });
+// };
+//
+// if (isLoading) {
+//  return <ActivityIndicator size="large"
+//    style={styles.loadingIndicator} />;
+//  }
+//
+//  if (error) {
+//    return <Text
+//      style=styles.errorText}>
+//      {error}
+//    </Text>;
+//  }
+//
+// return (
+//  <View style={styles.container}>
+//    <Text style={styles.title}>Categories</Text>
+//     <FlatList
+//        data={categories}
+//        keyExtractor={(item) = item.id.toString()}
+//        renderItem={({ item }) => (
+//          <CategoryItem category={item}
+//            onPress={handleCategoryPress} />
+//        )}
+//        horizontal
+//        showHorizontalScrollIndicator={false}
+//     />
+//   </View>
+//   );
+//  };
+//
+// const styles =
 
 const CategoryList = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Categories</Text>
       <FlatList
-        data={categories}
-        keyExtractor={(item) => item.id.toString()}
-        renderItem={({ item }) => <CategoryItem category={item} />}
-        horizontal
-        showsHorizontalScrollIndicator={false}
-      />
+          data={categories}
+          keyExtractor={(item) => item.id.toString()}
+          renderItem={({ item }) => (
+              <CategoryItem category={item} onPress={handleCategoryPress} />
+          )}
+          horizontal={true}
+          showsHorizontalScrollIndicator={false}
+          />
     </View>
   );
 };
@@ -56,6 +140,15 @@ const styles = StyleSheet.create({
     fontSize: 16,
     textAlign: 'center',
   },
+  loadingIndicator: {
+    flex: 1,
+    justifyContent: 'center'
+  },
+  errorText: {
+    color: 'red',
+    textAlign: 'center',
+    padding: 10
+  }
 });
 
 export default CategoryList;
